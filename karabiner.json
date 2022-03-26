@@ -16,7 +16,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Shift to change language When Held",
+                        "description": "Shift to ctrl-space When Held",
                         "manipulators": [
                             {
                                 "from": {
@@ -48,7 +48,21 @@
                     }
                 ]
             },
-            "devices": [],
+            "devices": [
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": false,
+                        "is_pointing_device": true,
+                        "product_id": 45093,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": []
+                }
+            ],
             "fn_function_keys": [
                 {
                     "from": {
@@ -194,6 +208,26 @@
                     "to": [
                         {
                             "key_code": "delete_forward"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "pointing_button": "button4"
+                    },
+                    "to": [
+                        {
+                            "key_code": "f17"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "pointing_button": "button5"
+                    },
+                    "to": [
+                        {
+                            "key_code": "f18"
                         }
                     ]
                 }
