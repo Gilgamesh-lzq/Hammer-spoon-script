@@ -1,7 +1,7 @@
 # my_hammer_spoon_script
 
 ## Introduction
-This is a hammer spoon script in using by myself. It can call many system APIs and complete many automation tasks, including automatically switching input methods and adjusting window positions.
+This is a hammer spoon script in using by myself. It can call many system APIs and complete many automation tasks, including automatically switching input methods, adjusting window positions, and mapping my mouse side keys to going further or going back which is useful in Safari and Finder.
 
 After installing the hammer spoon, follow the prompts to grant the corresponding permissions, and then you can see a hidden folder `.hammerspoon` in the user's home directory and put the script into it. `init.lua` is required, and the remaining scripts will be called in this script.
 
