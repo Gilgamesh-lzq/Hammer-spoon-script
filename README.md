@@ -9,6 +9,8 @@ My scripts include five documents,`init.lua`,`layout.lua`,`language.lua`,`markdo
 
 I have made a lot of changes to the reference code according to my own needs, including fixing some bugs and enhancing code readability. You can also refer to [Official Document](http://www.hammerspoon.org/docs/) to make a script that suits you.
 
+Besides, I also uploaded karabiner's profile. You can use key mapping happily by replacing it with `~/.config/karabiner/karabiner.json` in your user directory.
+
 ## My design
 I don't use Do Not Disturb Mode, so I used Karabiner to map f6 to a non-existent key f19, and then bound f19 to the entry and exit keys of markdown mode. It is worth mentioning that I think the shortcut key of typora is convenient enough. The script markdown mode that automatically exits will not help me, so I decided to change it to no automatic exit, so that continuous operation can enhance efficiency.
 
