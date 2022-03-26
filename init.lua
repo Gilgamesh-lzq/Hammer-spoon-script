@@ -20,12 +20,23 @@ myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConf
 hs.alert.closeAll()
 hs.alert.show("Config loaded",0.6)
 
--- 强制粘贴
+-- 强制粘贴(针对某校选课系统NT要求🥴)
 hs.hotkey.bind({"ctrl"}, "V", function() 
   hs.eventtap.keyStrokes(hs.pasteboard.getContents()) 
 end)
 
 -- 切换窗口
 hs.hotkey.bind({}, "f19", function() 
-  keyUpDown('cmd', '`')
+  hs.eventtap.keyStroke('cmd', '`', 0)
+end)
+
+-- 鼠标上键 回退 适配 Logitech Anywhere 3
+-- 请自行使用 Karabiner-EventViewer 观察和调整按键映射
+hs.hotkey.bind({}, "f18", function() 
+  hs.eventtap.keyStroke('cmd', '[', 0)
+end)
+
+-- 鼠标下键 前进
+hs.hotkey.bind({}, "f17", function() 
+  hs.eventtap.keyStroke('cmd', ']', 0)
 end)
