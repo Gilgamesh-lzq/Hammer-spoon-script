@@ -18,14 +18,14 @@ function reloadConfig(files)
 end
 myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 hs.alert.closeAll()
-hs.alert.show("Config loaded",0.6)
+hs.alert.show(" 配置已加载 ",0.6)
 
 -- 强制粘贴(针对某校选课系统NT要求🥴)
 hs.hotkey.bind({"ctrl"}, "V", function() 
   hs.eventtap.keyStrokes(hs.pasteboard.getContents()) 
 end)
 
--- 切换窗口
+-- 切换窗口.右option映射到了f19
 hs.hotkey.bind({}, "f19", function() 
   hs.eventtap.keyStroke('cmd', '`', 0)
 end)
@@ -40,3 +40,4 @@ end)
 hs.hotkey.bind({}, "f17", function() 
   hs.eventtap.keyStroke('cmd', ']', 0)
 end)
+
