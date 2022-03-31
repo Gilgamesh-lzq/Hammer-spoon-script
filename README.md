@@ -29,11 +29,11 @@ Besides, I also uploaded karabiner's profile. You can use key mapping happily by
 ## balabala
 Due to my limited personal level and the limitations of the **hammer spoon** software itself, some shortcut keys must be mapped with **Karabiner** to use, including：
 - `right_option` to `f19`
-- `button5` to `f18`
-- `button4` to `f17`
+- `button5` to `f18` (Logitech Anywhere3)
+- `button4` to `f17` (Logitech Anywhere3)
 - `caps_lock` to `f16`
 - `right_shift` to `delete_forward`
-- `f6` to `f6` (Media button Do Not Disturb Mode by default)
+- `f6` to `f6` (Media button Do-Not-Disturb-Mode by default)
 - `left_shift`
   - to `shift` when *held*
   - to `⌘+⌥+⌃+space` when *tap* 
