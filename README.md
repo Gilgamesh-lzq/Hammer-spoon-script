@@ -38,7 +38,7 @@ Due to my limited personal level and the limitations of the **hammer spoon** sof
   - to `shift` when *held*
   - to `⌘+⌥+⌃+space` when *tap* 
 
-Besides, you should set set up the following functions in System Preferance:
+Besides, you should set set up the following shortcut keys in "System Preferance":
 - `⌘+・` for switching windows in a software
 - `⌘+⌥+⌃+space` for switching the next input method
 
