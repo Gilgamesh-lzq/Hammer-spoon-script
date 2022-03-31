@@ -12,9 +12,10 @@ local app_list = {
     {'/Applications/Visual Studio Code.app', 'English'},
     {'/Applications/PyCharm.app', 'English'},
     {'/Applications/IntelliJ IDEA.app ', 'English'},
-    {'/Applications/Clion.app', 'English'},
+    {'/Applications/CLion.app', 'English'},
     {'/Applications/Royal TSX.app ', 'English'},
     {'/Applications/Safari.app', 'English'},
+    {'/Applications/Royal TSX.app', 'English'},
 
     --{'/System/Library/CoreServices/Finder.app', 'Chinese'},
     {'/Applications/WeChat.app', 'Chinese'},
@@ -70,3 +71,21 @@ function applicationWatcher(appName, eventType, app_object)
 end
 appWatcher = application.watcher.new(applicationWatcher)
 appWatcher:start()
+
+-- 锁定大写
+hs.hotkey.bind({}, "f16", function() 
+    if hs.hid.capslock.get() == false then   -- 当前没有大写锁定  
+        alert.closeAll()
+        hs.alert.show(" 大 写 ",0.6)
+        now = hs.keycodes.currentSourceID()    
+        hs.keycodes.currentSourceID(en)
+        hs.hid.led.set("caps", true)
+        hs.hid.capslock.set(true)
+    else                                     -- 当前大写锁定
+        alert.closeAll()
+        hs.alert.show(" 小 写 ",0.6) 
+        hs.keycodes.currentSourceID(now)
+        hs.hid.led.set("caps", false)
+        hs.hid.capslock.set(false)
+    end
+end)
