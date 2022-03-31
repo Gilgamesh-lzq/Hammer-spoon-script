@@ -74,16 +74,22 @@ appWatcher:start()
 
 -- 锁定大写
 hs.hotkey.bind({}, "f16", function() 
+    now = zh                                 
+    -- 防止某些由大写开始的奇葩状态机状态导致的报错
+    -- 按理说状态机应当从没有大写锁定开始
     if hs.hid.capslock.get() == false then   -- 当前没有大写锁定  
         alert.closeAll()
         hs.alert.show(" 大 写 ",0.6)
-        now = hs.keycodes.currentSourceID()    
+
+        now = hs.keycodes.currentSourceID() 
+           
         hs.keycodes.currentSourceID(en)
         hs.hid.led.set("caps", true)
         hs.hid.capslock.set(true)
     else                                     -- 当前大写锁定
         alert.closeAll()
         hs.alert.show(" 小 写 ",0.6) 
+
         hs.keycodes.currentSourceID(now)
         hs.hid.led.set("caps", false)
         hs.hid.capslock.set(false)
