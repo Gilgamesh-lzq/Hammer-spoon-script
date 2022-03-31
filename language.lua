@@ -73,7 +73,7 @@ appWatcher = application.watcher.new(applicationWatcher)
 appWatcher:start()
 
 -- 锁定大写
-hs.hotkey.bind({}, "f16", function() 
+hs.hotkey.bind({}, "f16", function()  
     now = zh                                 
     -- 防止某些由大写开始的奇葩状态机状态导致的报错
     -- 按理说状态机应当从没有大写锁定开始
