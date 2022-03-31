@@ -38,5 +38,9 @@ Due to my limited personal level and the limitations of the **hammer spoon** sof
   - to `shift` when *held*
   - to `⌘+⌥+⌃+space` when *tap* 
 
+Besides, you should set set up the following functions in System Preferance:
+- `⌘+・` for switching windows in a software
+- `⌘+⌥+⌃+space` for switching the next input method
+
 At present, the software still has a bug. The specific performance is that when the system language is English at present, click "System Preferance" or anything else on the taskbar, and everything is normal. However, when the system language is Chinese at present, when the same operation is performed, there will be a switching language pop-up window every mouse click. The pop-up window of words is " 中 文 " in my settings. In fact, I don't set the default language of system-related software (they usually do not need to be entered), and the Chinese and English input methods are exactly the same in my code, so such bugs should not appear. I can't solve this problem. If anyone knows how to solve it, you can send an issue to contact me. Thank you.
 
