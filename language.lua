@@ -7,6 +7,7 @@ str_en = " English "
 str_zh = " 中 文 "
 
 -- 需要变换语言的app
+-- 不需要输入的软件尽量不写.语言切换提示挺烦人的
 local app_list = {
     {'/System/Applications/Utilities/Terminal.app', 'English'},
     {'/Applications/Visual Studio Code.app', 'English'},
@@ -17,10 +18,10 @@ local app_list = {
     {'/Applications/Safari.app', 'English'},
     {'/Applications/Royal TSX.app', 'English'},
 
-    --{'/System/Library/CoreServices/Finder.app', 'Chinese'},
+    {'/Applications/Keynote.app', 'Chinese'},
     {'/Applications/WeChat.app', 'Chinese'},
     {'/Applications/QQ.app', 'Chinese'},
-    {'/Applications/QQMusic.app', 'Chinese'},
+    --{'/Applications/QQMusic.app', 'Chinese'},
     {'/System/Applications/Notes.app', 'Chinese'},
     {'/Applications/Typora.app', 'Chinese'},
     {'/Applications/texstudio.app', 'Chinese'},   
@@ -31,10 +32,10 @@ local app_list = {
 function inputchange()    
     if hs.keycodes.currentSourceID() == en then
         alert.closeAll()
-        alert.show(str_en,0.6)
+        alert.show(str_en,0.5)
     elseif hs.keycodes.currentSourceID() == zh then
         alert.closeAll()
-        alert.show(str_zh,0.6)
+        alert.show(str_zh,0.5)
     end
 end
 
@@ -42,17 +43,17 @@ end
 -- 更改输入法并提示
 function updateFocusAppInputMethod(app_path)
     for _, app in pairs(app_list) do
-        local appPath = app[1]                  -- 预期的软件路径
-        local expectedIme = app[2]              -- 预期的语言
-        if app_path == appPath then             -- 是需要改变输入法的软件
+        local appPath = app[1]
+        local expectedIme = app[2]
+        if app_path == appPath then
             if expectedIme == 'English' then
-                hs.keycodes.currentSourceID(en) -- 切换成英文
+                hs.keycodes.currentSourceID(en)
                 alert.closeAll()
-                alert.show(str_en,0.6)
+                alert.show(str_en,0.5)
             elseif expectedIme == 'Chinese' then
-                hs.keycodes.currentSourceID(zh) -- 切换成中文
+                hs.keycodes.currentSourceID(zh)
                 alert.closeAll()
-                alert.show(str_zh,0.6)
+                alert.show(str_zh,0.5)
             end   
             -- inputchange()
             break
@@ -72,26 +73,30 @@ end
 appWatcher = application.watcher.new(applicationWatcher)
 appWatcher:start()
 
--- 锁定大写
-hs.hotkey.bind({}, "f16", function()  
-    now = zh                                 
-    -- 防止某些由大写开始的奇葩状态机状态导致的报错
-    -- 按理说状态机应当从没有大写锁定开始
-    if hs.hid.capslock.get() == false then   -- 当前没有大写锁定  
+-- 锁定大写.大写键重映射到了f16上
+-- 功能不稳定，已弃用
+hs.hotkey.bind({}, "f16", function() 
+    now = en                                 
+    if hs.hid.capslock.get() == false then  
         alert.closeAll()
-        hs.alert.show(" 大 写 ",0.6)
+        hs.alert.show(" 大 写 ",0.5)
 
         now = hs.keycodes.currentSourceID() 
-           
+
         hs.keycodes.currentSourceID(en)
         hs.hid.led.set("caps", true)
         hs.hid.capslock.set(true)
-    else                                     -- 当前大写锁定
+    else
         alert.closeAll()
-        hs.alert.show(" 小 写 ",0.6) 
+        hs.alert.show(" 小 写 ",0.5) 
 
         hs.keycodes.currentSourceID(now)
         hs.hid.led.set("caps", false)
         hs.hid.capslock.set(false)
     end
+end)
+
+-- 大写键切换应用
+hs.hotkey.bind({}, "f15", function() 
+    hs.eventtap.keyStroke('command', 'tab', 0)
 end)
