@@ -18,9 +18,10 @@ function reloadConfig(files)
 end
 myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
 hs.alert.closeAll()
-hs.alert.show(" 配置已加载 ",0.6)
+hs.alert.show(" 配置已加载 ",0.5)
 
--- 强制粘贴(针对某校选课系统NT要求🥴)
+-- 模拟手动输入
+-- 可用于粘贴文本时彻底消除格式，以及某校选课系统的手动输入承诺😬
 hs.hotkey.bind({"ctrl"}, "V", function() 
   hs.eventtap.keyStrokes(hs.pasteboard.getContents()) 
 end)
@@ -37,6 +38,7 @@ hs.hotkey.bind({}, "f18", function()
 end)
 
 -- 鼠标下键 前进
+-- 前进很少使用，已弃用此功能。或许下键设定为mission_control更合适
 hs.hotkey.bind({}, "f17", function() 
   hs.eventtap.keyStroke('cmd', ']', 0)
 end)
