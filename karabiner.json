@@ -45,6 +45,38 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "caps_lock to cmd tab",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "tab",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -217,7 +249,7 @@
                     },
                     "to": [
                         {
-                            "key_code": "f17"
+                            "apple_vendor_keyboard_key_code": "mission_control"
                         }
                     ]
                 },
