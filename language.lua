@@ -5,9 +5,10 @@ en = "com.apple.keylayout.ABC"
 zh = "com.apple.inputmethod.SCIM.ITABC"
 str_en = " English "
 str_zh = " 中 文 "
+last = str_zh
 
 -- 需要变换语言的app
--- 不需要输入的软件尽量不写.语言切换提示挺烦人的
+-- 不需要输入的软件尽量不写.频繁语言切换提示挺烦人的
 local app_list = {
     {'/System/Applications/Utilities/Terminal.app', 'English'},
     {'/Applications/Visual Studio Code.app', 'English'},
@@ -15,7 +16,7 @@ local app_list = {
     {'/Applications/IntelliJ IDEA.app ', 'English'},
     {'/Applications/CLion.app', 'English'},
     {'/Applications/Royal TSX.app ', 'English'},
-    {'/Applications/Safari.app', 'English'},
+    --{'/Applications/Safari.app', 'English'},
     {'/Applications/Royal TSX.app', 'English'},
 
     {'/Applications/Keynote.app', 'Chinese'},
@@ -28,6 +29,21 @@ local app_list = {
     {'/Applications/Microsoft Word.app', 'Chinese'},
 }
 
+-- 手动切换输入法时给出提示
+function changeManually()
+    now = hs.keycodes.currentSourceID()
+    if now ~= last then
+        if now == en then
+            alert.closeAll()
+            alert.show(str_en,0.5)
+        elseif now == zh then
+            alert.closeAll()
+            alert.show(str_zh,0.5)
+        end
+        last = hs.keycodes.currentSourceID()
+    end
+end
+
 -- 提示语言改变
 function inputchange()    
     if hs.keycodes.currentSourceID() == en then
@@ -39,7 +55,6 @@ function inputchange()
     end
 end
 
--- 我不懂为啥，但是如果把切换语言后的输出去掉，改成调用那个注释掉的函数，就会有多次输出，而且输出中英文不固定
 -- 更改输入法并提示
 function updateFocusAppInputMethod(app_path)
     for _, app in pairs(app_list) do
@@ -55,7 +70,6 @@ function updateFocusAppInputMethod(app_path)
                 alert.closeAll()
                 alert.show(str_zh,0.5)
             end   
-            -- inputchange()
             break
         end        
     end  
@@ -67,34 +81,36 @@ function applicationWatcher(appName, eventType, app_object)
     if eventType == application.watcher.activated then
         updateFocusAppInputMethod(app_path)
     else
-        hs.keycodes.inputSourceChanged(inputchange)       
+        hs.keycodes.inputSourceChanged(changeManually)
     end
 end
 appWatcher = application.watcher.new(applicationWatcher)
 appWatcher:start()
 
+----------------------------------------------------------------------------
+----------------------------------------------------------------------------
 -- 锁定大写.大写键重映射到了f16上
 -- 功能不稳定，已弃用
-hs.hotkey.bind({}, "f16", function() 
-    now = en                                 
-    if hs.hid.capslock.get() == false then  
-        alert.closeAll()
-        hs.alert.show(" 大 写 ",0.5)
+-- hs.hotkey.bind({}, "f16", function() 
+--     now = en                                 
+--     if hs.hid.capslock.get() == false then  
+--         alert.closeAll()
+--         hs.alert.show(" 大 写 ",0.5)
 
-        now = hs.keycodes.currentSourceID() 
+--         now = hs.keycodes.currentSourceID() 
 
-        hs.keycodes.currentSourceID(en)
-        hs.hid.led.set("caps", true)
-        hs.hid.capslock.set(true)
-    else
-        alert.closeAll()
-        hs.alert.show(" 小 写 ",0.5) 
+--         hs.keycodes.currentSourceID(en)
+--         hs.hid.led.set("caps", true)
+--         hs.hid.capslock.set(true)
+--     else
+--         alert.closeAll()
+--         hs.alert.show(" 小 写 ",0.5) 
 
-        hs.keycodes.currentSourceID(now)
-        hs.hid.led.set("caps", false)
-        hs.hid.capslock.set(false)
-    end
-end)
+--         hs.keycodes.currentSourceID(now)
+--         hs.hid.led.set("caps", false)
+--         hs.hid.capslock.set(false)
+--     end
+-- end)
 
 -- 大写键切换应用
 hs.hotkey.bind({}, "f15", function() 
