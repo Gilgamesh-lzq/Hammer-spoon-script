@@ -25,7 +25,9 @@ Besides, I also uploaded karabiner's profile. You can use key mapping happily by
 
 ## Updates
 **2022.4.1** Now it supports Caps_lock to be binded with upper-case characters even in Chinese langugge input method, which is not originally supported in macOS. Now the input method is quite the same as that in windows system. You should bind your Caps_lock with f16 by Karabiner first, for there is some trouble binding a single function-key to a script function.
+
 **2022.5.17** Due to the instability of system calls, the last updated FORCE UPPER-CASE operation often fails, and now it has been deprecated.
+
 **2022.5.28** For a long time, due to the strange logic of system calls, it is inevitable that it still prompts that the current input method is Chinese in the program you have not specified. Now, I have fixed it, and programs that are not in the list you wrote will no longer be disturbed by the prompt box. Of course, there will still be prompts when manually switching input methods.
 
 ## balabala
