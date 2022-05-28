@@ -21,10 +21,12 @@ Besides, I also uploaded karabiner's profile. You can use key mapping happily by
 - Map mouse's side keys to go further or go back (It's useful in Safari and Finder)
 - Map `right_shift` to `delete`
 - Map `left_shift` to switching input method
-- Force Upper-case English character when `Caps_lock` in any input method
+- Switch your currrntly open windows with `Caps_lock`
 
 ## Updates
 **2022.4.1** Now it supports Caps_lock to be binded with upper-case characters even in Chinese langugge input method, which is not originally supported in macOS. Now the input method is quite the same as that in windows system. You should bind your Caps_lock with f16 by Karabiner first, for there is some trouble binding a single function-key to a script function.
+**2022.5.17** Due to the instability of system calls, the last updated FORCE UPPER-CASE operation often fails, and now it has been deprecated.
+**2022.5.28** For a long time, due to the strange logic of system calls, it is inevitable that it still prompts that the current input method is Chinese in the program you have not specified. Now, I have fixed it, and programs that are not in the list you wrote will no longer be disturbed by the prompt box. Of course, there will still be prompts when manually switching input methods.
 
 ## balabala
 Due to my limited personal level and the limitations of the **hammer spoon** software itself, some shortcut keys must be mapped with **Karabiner** to use, including：
@@ -41,6 +43,3 @@ Due to my limited personal level and the limitations of the **hammer spoon** sof
 Besides, you should set set up the following shortcut keys in "System Preferance":
 - `⌘+・` for switching windows in a software
 - `⌘+⌥+⌃+space` for switching the next input method
-
-At present, the software still has a bug. The specific performance is that when the system language is English at present, click "System Preferance" or anything else on the taskbar, and everything is normal. However, when the system language is Chinese at present, when the same operation is performed, there will be a switching language pop-up window every mouse click. The pop-up window of words is " 中 文 " in my settings. In fact, I don't set the default language of system-related software (they usually do not need to be entered), and the Chinese and English input methods are exactly the same in my code, so such bugs should not appear. I can't solve this problem. If anyone knows how to solve it, you can send an issue to contact me. Thank you.
-
