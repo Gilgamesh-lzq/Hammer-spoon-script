@@ -3,9 +3,38 @@ local application = require "hs.application"
 
 en = "com.apple.keylayout.ABC"
 zh = "com.apple.inputmethod.SCIM.ITABC"
-str_en = " English "
+str_en = " A B C "
 str_zh = " 中 文 "
 last = str_zh
+
+zh_style = {
+    strokeWidth  = 5, -- 边框宽度
+    strokeColor = { white = 0, alpha = 0.5 }, -- 边框颜色
+    fillColor   = { white = 1, alpha = 0.7 }, -- 背景颜色
+    textColor = { red=0.345, alpha=1 }, -- 文字颜色
+    textFont  = "PingFangSC-Medium", -- ".AppleSystemUIFont"
+    textSize  = 42,
+    radius = 25,
+    atScreenEdge = 0,
+    fadeInDuration = 0, -- 载入动画
+    fadeOutDuration = 0, -- 淡出动画
+    padding = 5, -- 文字的边距
+}
+
+en_style = {
+    strokeWidth  = 5, -- 边框宽度
+    strokeColor = { white = 0, alpha = 0.5 }, -- 边框颜色
+    fillColor   = { white = 1, alpha = 0.7 }, -- 背景颜色
+    textColor = { blue=0.4, alpha=1 }, -- 文字颜色
+    textFont  = "PingFangSC-Medium", -- ".AppleSystemUIFont"
+    textSize  = 42,
+    radius = 25,
+    atScreenEdge = 0,
+    fadeInDuration = 0, -- 载入动画
+    fadeOutDuration = 0, -- 淡出动画
+    padding = 5, -- 文字的边距
+}
+
 
 -- 需要变换语言的app
 -- 不需要输入的软件尽量不写.频繁语言切换提示挺烦人的
@@ -17,15 +46,13 @@ local app_list = {
     {'/Applications/CLion.app', 'English'},
     {'/Applications/Royal TSX.app ', 'English'},
     --{'/Applications/Safari.app', 'English'},
-    {'/Applications/Royal TSX.app', 'English'},
 
     {'/Applications/Keynote.app', 'Chinese'},
     {'/Applications/WeChat.app', 'Chinese'},
     {'/Applications/QQ.app', 'Chinese'},
-    --{'/Applications/QQMusic.app', 'Chinese'},
     {'/System/Applications/Notes.app', 'Chinese'},
     {'/Applications/Typora.app', 'Chinese'},
-    {'/Applications/texstudio.app', 'Chinese'},   
+    -- {'/Applications/texstudio.app', 'Chinese'},   
     {'/Applications/Microsoft Word.app', 'Chinese'},
 }
 
@@ -35,10 +62,10 @@ function changeManually()
     if now ~= last then
         if now == en then
             alert.closeAll()
-            alert.show(str_en,0.5)
+            alert.show(str_en,en_style,0.5)
         elseif now == zh then
             alert.closeAll()
-            alert.show(str_zh,0.5)
+            alert.show(str_zh,zh_style,0.5)
         end
         last = hs.keycodes.currentSourceID()
     end
@@ -48,10 +75,10 @@ end
 function inputchange()    
     if hs.keycodes.currentSourceID() == en then
         alert.closeAll()
-        alert.show(str_en,0.5)
+        alert.show(str_en,en_style,0.5)
     elseif hs.keycodes.currentSourceID() == zh then
         alert.closeAll()
-        alert.show(str_zh,0.5)
+        alert.show(str_zh,zh_style,0.5)
     end
 end
 
@@ -64,11 +91,11 @@ function updateFocusAppInputMethod(app_path)
             if expectedIme == 'English' then
                 hs.keycodes.currentSourceID(en)
                 alert.closeAll()
-                alert.show(str_en,0.5)
+                alert.show(str_en,en_style,0.5)
             elseif expectedIme == 'Chinese' then
                 hs.keycodes.currentSourceID(zh)
                 alert.closeAll()
-                alert.show(str_zh,0.5)
+                alert.show(str_zh,zh_style,0.5)
             end   
             break
         end        
@@ -113,6 +140,6 @@ appWatcher:start()
 -- end)
 
 -- 大写键切换应用
-hs.hotkey.bind({}, "f15", function() 
-    hs.eventtap.keyStroke('command', 'tab', 0)
-end)
+-- hs.hotkey.bind({}, "f15", function() 
+--     hs.eventtap.keyStroke('command', 'tab', 0)
+-- end)
