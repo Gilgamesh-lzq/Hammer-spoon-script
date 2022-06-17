@@ -4,6 +4,21 @@ require("language")
 require("layout")
 require("markdown")
 
+-- 所有提示语句的显示样式
+hs.alert.defaultStyle = {
+  strokeWidth  = 5, -- 边框宽度
+  strokeColor = { white = 0, alpha = 1 }, -- 边框颜色
+  fillColor   = { white = 1, alpha = 0.7 }, -- 背景颜色
+  textColor = { white = 0, alpha = 1 }, -- 文字颜色
+  textFont  = "PingFangSC-Medium", -- ".AppleSystemUIFont"
+  textSize  = 42,
+  radius = 25,
+  atScreenEdge = 0,
+  fadeInDuration = 0, -- 载入动画
+  fadeOutDuration = 0, -- 淡出动画
+  padding = 5, -- 文字的边距
+}
+
 -- 自动重新加载配置文件
 function reloadConfig(files)
   doReload = false
@@ -42,4 +57,3 @@ end)
 hs.hotkey.bind({}, "f17", function() 
   hs.eventtap.keyStroke('cmd', ']', 0)
 end)
-
