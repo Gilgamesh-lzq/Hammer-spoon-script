@@ -10,7 +10,7 @@ last = str_zh
 zh_style = {
     strokeWidth  = 5, -- 边框宽度
     strokeColor = { white = 0, alpha = 0.5 }, -- 边框颜色
-    fillColor   = { white = 1, alpha = 0.7 }, -- 背景颜色
+    fillColor   = { ["red"]=1,["green"]=0.8,["blue"]=0.8,["alpha"]=0.7 }, -- 背景颜色
     textColor = { red=0.345, alpha=1 }, -- 文字颜色
     textFont  = "PingFangSC-Medium", -- ".AppleSystemUIFont"
     textSize  = 42,
@@ -24,7 +24,7 @@ zh_style = {
 en_style = {
     strokeWidth  = 5, -- 边框宽度
     strokeColor = { white = 0, alpha = 0.5 }, -- 边框颜色
-    fillColor   = { white = 1, alpha = 0.7 }, -- 背景颜色
+    fillColor   = { ["red"]=0.8,["green"]=0.8,["blue"]=1,["alpha"]=0.7 }, -- 背景颜色
     textColor = { blue=0.4, alpha=1 }, -- 文字颜色
     textFont  = "PingFangSC-Medium", -- ".AppleSystemUIFont"
     textSize  = 42,
@@ -34,7 +34,6 @@ en_style = {
     fadeOutDuration = 0, -- 淡出动画
     padding = 5, -- 文字的边距
 }
-
 
 -- 需要变换语言的app
 -- 不需要输入的软件尽量不写.频繁语言切换提示挺烦人的
@@ -52,7 +51,6 @@ local app_list = {
     {'/Applications/QQ.app', 'Chinese'},
     {'/System/Applications/Notes.app', 'Chinese'},
     {'/Applications/Typora.app', 'Chinese'},
-    -- {'/Applications/texstudio.app', 'Chinese'},   
     {'/Applications/Microsoft Word.app', 'Chinese'},
 }
 
@@ -71,17 +69,6 @@ function changeManually()
     end
 end
 
--- 提示语言改变
-function inputchange()    
-    if hs.keycodes.currentSourceID() == en then
-        alert.closeAll()
-        alert.show(str_en,en_style,0.5)
-    elseif hs.keycodes.currentSourceID() == zh then
-        alert.closeAll()
-        alert.show(str_zh,zh_style,0.5)
-    end
-end
-
 -- 更改输入法并提示
 function updateFocusAppInputMethod(app_path)
     for _, app in pairs(app_list) do
@@ -92,11 +79,13 @@ function updateFocusAppInputMethod(app_path)
                 hs.keycodes.currentSourceID(en)
                 alert.closeAll()
                 alert.show(str_en,en_style,0.5)
+               
             elseif expectedIme == 'Chinese' then
                 hs.keycodes.currentSourceID(zh)
                 alert.closeAll()
                 alert.show(str_zh,zh_style,0.5)
-            end   
+            end 
+
             break
         end        
     end  
