@@ -30,6 +30,8 @@ Besides, I also uploaded karabiner's profile. You can use key mapping happily by
 
 **2022.5.28** For a long time, due to the strange logic of system calls, it is inevitable that it still prompts that the current input method is Chinese in the program you have not specified. Now, I have fixed it, and programs that are not in the list you wrote will no longer be disturbed by the prompt box. Of course, there will still be prompts when manually switching input methods.
 
+**2022.7.30** Scripts now support the use of the shortcut key `f4' to quickly open or close Terminal. If you are troubled by an abnormal recovery exit prompt every time you reopen, you can consider changing `kill9` in the script to `kill`, but there is often a window prompt "Issession running sure to quit?" To solve this problem, you can consider closing the recovery exit window in terminal preferences. In addition, when switching on/off the Terminal, it will check whether vscode has any windows, and close the app if there are no other windows.
+
 ## balabala
 Due to my limited personal level and the limitations of the **hammer spoon** software itself, some shortcut keys must be mapped with **Karabiner** to use, including：
 - `right_option` to `f19`
