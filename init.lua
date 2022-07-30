@@ -61,17 +61,19 @@ end)
 -- 便捷控制 Terminal 打开关闭. Vscode无窗口时自动关闭
 hs.hotkey.bind({}, "f4", function() 
   terminal = hs.application.get("终端")
-  if not terminal or next(vscode:allWindows()) then -- app没有打开，或者打开了但没有窗口
+  if not terminal then                              -- app没有打开
     hs.application.launchOrFocus("Terminal.app")
+  -- elseif not next(terminal:allWindows()) then    -- 或者打开了但没有窗口
+  --   hs.application.launchOrFocus("Terminal.app")
   else
-    all_window = terminal:allWindows() -- 关闭所有窗口再关掉app，防止下次打开显示异常退出
+    all_window = terminal:allWindows()              -- 关闭所有窗口再关掉app，防止下次打开显示异常退出
     for i, obj in pairs(all_window) do
       obj:close()
     end
     terminal:kill9()
   end
 
-  vscode = hs.application.get("Code") -- vscode没有窗口时顺便关闭vscode
+  vscode = hs.application.get("Code")               -- vscode没有窗口时顺便关闭vscode
   if vscode and not next(vscode:allWindows()) then
     vscode:kill9()
   end
