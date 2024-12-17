@@ -22,7 +22,7 @@ Besides, I also uploaded karabiner's profile. You can use key mapping happily by
 - Map `right_shift` to `delete`
 - Map `left_shift` to switching input method
 - Switch your currrntly open windows with `Caps_lock`
-
+addfadfad
 ## Updates
 **2022.4.1** Now it supports Caps_lock to be binded with upper-case characters even in Chinese langugge input method, which is not originally supported in macOS. Now the input method is quite the same as that in windows system. You should bind your Caps_lock with f16 by Karabiner first, for there is some trouble binding a single function-key to a script function.
 
