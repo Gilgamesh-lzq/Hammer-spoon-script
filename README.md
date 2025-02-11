@@ -1,5 +1,5 @@
 # My hammer spoon script
- 
+
 ## Introduction
 This is a **hammer spoon** script in using by myself. It can call many macOS system APIs and complete various automation tasks.
 
