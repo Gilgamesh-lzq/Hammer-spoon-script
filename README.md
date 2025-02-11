@@ -3,7 +3,7 @@
 ## Introduction
 This is a **hammer spoon** script in using by myself. It can call many macOS system APIs and complete various automation tasks.
 
-aAfter installing the hammer spoon, follow the prompts to grant the corresponding permissions, and then you can see a hidden folder `.hammerspoon` in the user's home directory and put the script into it. `init.lua` is required, and the remaining scripts will be called in this script.
+abAfter installing the hammer spoon, follow the prompts to grant the corresponding permissions, and then you can see a hidden folder `.hammerspoon` in the user's home directory and put the script into it. `init.lua` is required, and the remaining scripts will be called in this script.
 
 My scripts include five documents,`init.lua`,`layout.lua`,`language.lua`,`markdown.lua`,`status-message.lua`. The second script refers to [example of the official website](http://www.hammerspoon.org/go/); the last three scripts refer to [a great project](https://github.com/JIagengDing/hammerspoon-config), and he refers to [another great project](https://www.bilibili.com/video/BV1Q54y197dw).
 
@@ -22,12 +22,13 @@ Besides, I also uploaded karabiner's profile. You can use key mapping happily by
 - Map `right_shift` to `delete`
 - Map `left_shift` to switching input method
 - Switch your currrntly open windows with `Caps_lock`
-
+addfadfad
 ## Updates
 **2022.4.1** Now it supports Caps_lock to be binded with upper-case characters even in Chinese langugge input method, which is not originally supported in macOS. Now the input method is quite the same as that in windows system. You should bind your Caps_lock with f16 by Karabiner first, for there is some trouble binding a single function-key to a script function.
 
 **2022.5.17** Due to the instability of system calls, the last updated FORCE UPPER-CASE operation often fails, and now it has been deprecated.
-
+adfadf
+fdadf
 **2022.5.28** For a long time, due to the strange logic of system calls, it is inevitable that it still prompts that the current input method is Chinese in the program you have not specified. Now, I have fixed it, and programs that are not in the list you wrote will no longer be disturbed by the prompt box. Of course, there will still be prompts when manually switching input methods.
 
 **2022.7.30** Scripts now support the use of the shortcut key `f4` to quickly open or close Terminal. If you are troubled by an abnormal recovery exit prompt every time you reopen, you can consider changing `kill9` in the script to `kill`, but there is often a window prompt "Issession running sure to quit?" To solve this problem, you can consider closing the recovery exit window in terminal preferences. In addition, when switching on/off the Terminal, it will check whether vscode has any windows, and close the app if there are no other windows.
